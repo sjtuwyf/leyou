@@ -27,6 +27,21 @@ public enum ExceptionEnum {
     /**
      * 404
      */
+    SPEC_GROUP_NOT_FOUND(404,"商品规格组不存在"),
+
+    /**
+     * 404
+     */
+    SPEC_PARAM_NOT_FOUND(404,"商品规格参数不存在"),
+
+    /**
+     * 404
+     */
+    GOODS_NOT_FOUND(404,"商品不存在"),
+
+    /**
+     * 404
+     */
     BRAND_NOT_FOUND(404,"品牌不存在"),
 
     /**
