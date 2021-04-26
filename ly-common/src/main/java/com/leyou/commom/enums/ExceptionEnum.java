@@ -42,6 +42,21 @@ public enum ExceptionEnum {
     /**
      * 404
      */
+    GOODS_DETAIL_NOT_FOUND(404,"商品详情不存在"),
+
+    /**
+     * 404
+     */
+    GOODS_SKU_NOT_FOUND(404,"商品SKU不存在"),
+
+    /**
+     * 404
+     */
+    GOODS_STOCK_NOT_FOUND(404,"商品库存不存在"),
+
+    /**
+     * 404
+     */
     BRAND_NOT_FOUND(404,"品牌不存在"),
 
     /**
@@ -58,6 +73,21 @@ public enum ExceptionEnum {
      * 400
      */
     INVALID_FILE_TYPE(400,"无效的文件类型"),
+
+    /**
+     * 500
+     */
+    GOODS_SAVE_ERROR(500,"新增商品失败"),
+
+    /**
+     * 500
+     */
+    GOODS_UPDATE_ERROR(500,"更新商品失败"),
+
+    /**
+     * 400
+     */
+    GOODS_ID_CANNOT_BE_NULL(400,"商品id不能为空"),
     ;
 
     private int code;
