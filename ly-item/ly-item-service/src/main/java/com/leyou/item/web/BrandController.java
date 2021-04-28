@@ -25,20 +25,21 @@ public class BrandController {
 
     /**
      * 分页查询品牌
-     * @param page page
-     * @param  rows rows
+     *
+     * @param page   page
+     * @param rows   rows
      * @param sortBy sortBy
-     * @param desc desc
-     * @param key key
-     * @return ResponseEntity<PageResult<Brand>>
+     * @param desc   desc
+     * @param key    key
+     * @return ResponseEntity<PageResult < Brand>>
      */
     @GetMapping("page")
     public ResponseEntity<PageResult<Brand>> queryBrandByPage(
-            @RequestParam(value="page",defaultValue = "1") Integer page,
-            @RequestParam(value="rows",defaultValue = "5") Integer rows,
-            @RequestParam(value="sortBy",required = false) String sortBy,
-            @RequestParam(value="desc",defaultValue = "false") Boolean desc,
-            @RequestParam(value="key",required = false) String key
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @RequestParam(value = "rows", defaultValue = "5") Integer rows,
+            @RequestParam(value = "sortBy", required = false) String sortBy,
+            @RequestParam(value = "desc", defaultValue = "false") Boolean desc,
+            @RequestParam(value = "key", required = false) String key
     ) {
         return ResponseEntity.ok(brandService.queryBrandByPage(page, rows, sortBy, desc, key));
 
@@ -46,8 +47,9 @@ public class BrandController {
 
     /**
      * 新增品牌
+     *
      * @param brand brand
-     * @param cids cids
+     * @param cids  cids
      * @return ResponseEntity<Void>
      */
     @PostMapping
@@ -58,12 +60,23 @@ public class BrandController {
 
     /**
      * 根据cid查询品牌
+     *
      * @param cid cid
      * @return list
      */
     @GetMapping("/cid/{cid}")
     public ResponseEntity<List<Brand>> queryBrandByCid(@PathVariable("cid") Long cid) {
         return ResponseEntity.ok(brandService.queryBrandByCid(cid));
+    }
+
+    /**
+     * 根据id查询品牌
+     * @param id id
+     * @return brand
+     */
+    @GetMapping("{id}")
+    public ResponseEntity<Brand> queryBrandById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(brandService.queryById(id));
     }
 
 

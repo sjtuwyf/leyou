@@ -1,5 +1,6 @@
 package com.leyou.search.pojo;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
@@ -12,7 +13,7 @@ import java.util.Set;
 /**
  * @author ssqswyf
  */
-
+@Data
 @Document(indexName = "goods", type = "docs", shards = 1, replicas = 0)
 public class Goods {
     @Id
