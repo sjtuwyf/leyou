@@ -3,6 +3,7 @@ package com.leyou.item.web;
 import com.leyou.item.pojo.Category;
 import com.leyou.item.service.CategoryService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,5 +42,16 @@ public class CategoryController {
     @GetMapping("list/ids")
     public ResponseEntity<List<Category>> queryCategoryByIds(@RequestParam("ids") List<Long> ids) {
         return ResponseEntity.ok(categoryService.queryByIds(ids));
+    }
+
+
+    @GetMapping
+    public ResponseEntity<List<String>> queryNamesByIds(@RequestParam("ids")List<Long> ids){
+        List<String> names = this.categoryService.queryNamesByIds(ids);
+        if (CollectionUtils.isEmpty(names)) {
+            return ResponseEntity.notFound().build();
+        }
+        // 响应200
+        return ResponseEntity.ok(names);
     }
 }

@@ -189,8 +189,9 @@ public class SearchService {
         Page<Goods> result = repository.search(queryBuilder.build());
         // 4 解析结果
         long total = result.getTotalElements();
-        int totalPages = result.getTotalPages();
+//        int totalPages = result.getTotalPages();
+        long totalPages = (total + size - 1) / size;
         List<Goods> goodsList = result.getContent();
-        return new PageResult<>(total,(long)totalPages,goodsList);
+        return new PageResult<>(total,totalPages,goodsList);
     }
 }

@@ -33,6 +33,14 @@ public interface GoodsApi {
     @GetMapping("sku/list")
     List<Sku> querySkuBySpuId(@RequestParam("id") Long spuId);
 
+    /**
+     * 分页查询spu
+     * @param page page
+     * @param rows rows
+     * @param saleable salable
+     * @param key key
+     * @return Spu
+     */
     @GetMapping("/spu/page")
     PageResult<Spu> querySpuByPage(
             @RequestParam(value = "page", defaultValue = "1") Integer page,
@@ -40,4 +48,12 @@ public interface GoodsApi {
             @RequestParam(value = "saleable", required = false) Boolean saleable,
             @RequestParam(value = "key", required = false) String key
     );
+
+    /**
+     * 根据spu的id查询spu
+     * @param id
+     * @return Spu
+     */
+    @GetMapping("spu/{id}")
+    Spu querySpuById(@PathVariable("id") Long id);
 }

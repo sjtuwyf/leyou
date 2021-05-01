@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author ssqswyf
@@ -41,5 +42,16 @@ public class CategoryService {
             throw new LyException(ExceptionEnum.CATEGORY_NOT_FOUND);
         }
         return list;
+    }
+
+    /**
+     * 根据多个分类id查询分类名称
+     * @param ids
+     * @return
+     */
+    public List<String> queryNamesByIds(List<Long> ids){
+        List<Category> categories = this.categoryMapper.selectByIdList(ids);
+        // 把List<Category> 转化成List<String>
+        return categories.stream().map(category -> category.getName()).collect(Collectors.toList());
     }
 }
